@@ -36,6 +36,7 @@ gem 'jbuilder', '~> 2.5'
 gem 'bootstrap-sass'
 gem 'devise'
 gem 'cancancan'
+gem 'rolify'
 
 
 group :development, :test do
