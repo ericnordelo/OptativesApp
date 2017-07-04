@@ -1,0 +1,2 @@
+class Optative < ApplicationRecord
+end

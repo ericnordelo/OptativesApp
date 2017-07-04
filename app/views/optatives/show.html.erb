@@ -1,0 +1,44 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Title:</strong>
+  <%= @optative.title %>
+</p>
+
+<p>
+  <strong>Description:</strong>
+  <%= @optative.description %>
+</p>
+
+<p>
+  <strong>Professor:</strong>
+  <%= @optative.professor %>
+</p>
+
+<p>
+  <strong>Duration:</strong>
+  <%= @optative.duration %>
+</p>
+
+<p>
+  <strong>Schedule:</strong>
+  <%= @optative.schedule %>
+</p>
+
+<p>
+  <strong>Year:</strong>
+  <%= @optative.year %>
+</p>
+
+<p>
+  <strong>Program:</strong>
+  <%= @optative.program %>
+</p>
+
+<p>
+  <strong>Enrollment:</strong>
+  <%= @optative.enrollment %>
+</p>
+
+<%= link_to 'Edit', edit_optative_path(@optative) %> |
+<%= link_to 'Back', optatives_path %>
