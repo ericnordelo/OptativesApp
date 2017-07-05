@@ -7,108 +7,23 @@
                                         <div class="todo-head">
                                            
                                             <h3>
-                                                <span class="todo-grey">Optativos:</span> MostrANDO TODOS</h3>
+                                                <span class="todo-grey">Optativos:</span> mostrando todos</h3>
                                             <p class="todo-inline">22 Optativos Existentes
                                                 
                                             </p>
                                         </div>
                                         <ul class="todo-tasks-content">
-                                            <li class="todo-tasks-item">
-                                                <h4 class="todo-inline">
-                                                    <a data-toggle="modal" href="#todo-task-modal">Design for full featured ToDo Page with something</a>
-                                                </h4>
-                                                <p class="todo-inline todo-float-r">Bob,
-                                                    <span class="todo-red">TODAY</span>
-                                                </p>
-                                            </li>
-                                            <li class="todo-tasks-item">
-                                                <h4 class="todo-inline">
-                                                    <a data-toggle="modal" href="#todo-task-modal">Owl carousel pagination animation issue(clients logo, testimonials)</a>
-                                                </h4>
-                                                <p class="todo-inline todo-float-r">Shane,
-                                                    <span class="todo-red">TODAY</span>
-                                                </p>
-                                            </li>
-                                            <li class="todo-tasks-item">
-                                                <h4 class="todo-inline">
-                                                    <a data-toggle="modal" href="#todo-task-modal">Non fixed Home 2 header layout</a>
-                                                </h4>
-                                                <p class="todo-inline todo-float-r">Sean,
-                                                    <span class="todo-green">01 OCT</span>
-                                                </p>
-                                            </li>
-                                            <li class="todo-tasks-item">
-                                                <h4 class="todo-inline">
-                                                    <a data-toggle="modal" href="#todo-task-modal">Sample Images for Mega Menu Components Category</a>
-                                                </h4>
-                                                <p class="todo-inline todo-float-r">Shane,
-                                                    <span class="todo-green">03 OCT</span>
-                                                </p>
-                                            </li>
-                                            <li class="todo-tasks-item">
-                                                <h4 class="todo-inline">
-                                                    <a data-toggle="modal" href="#todo-task-modal">Browser & Device Compatibility</a>
-                                                </h4>
-                                                <p class="todo-inline todo-float-r">Bob,
-                                                    <span class="todo-green">07 OCT</span>
-                                                </p>
-                                            </li>
-                                            <li class="todo-tasks-item">
-                                                <h4 class="todo-inline">
-                                                    <a data-toggle="modal" href="#todo-task-modal">Sidebar Menu for Mobile</a>
-                                                </h4>
-                                                <p class="todo-inline todo-float-r">Alice,
-                                                    <span class="todo-green">08 OCT</span>
-                                                </p>
-                                            </li>
-                                            <li class="todo-tasks-item">
-                                                <h4 class="todo-inline">
-                                                    <a data-toggle="modal" href="#todo-task-modal">Sidebar Toggler optimization</a>
-                                                </h4>
-                                                <p class="todo-inline todo-float-r">Luke,
-                                                    <span class="todo-green">08 OCT</span>
-                                                </p>
-                                            </li>
-                                            <li class="todo-tasks-item">
-                                                <h4 class="todo-inline">
-                                                    <a data-toggle="modal" href="#todo-task-modal">Modals integration</a>
-                                                </h4>
-                                                <p class="todo-inline todo-float-r">John,
-                                                    <span class="todo-green">10 OCT</span>
-                                                </p>
-                                            </li>
-                                            <li class="todo-tasks-item">
-                                                <h4 class="todo-inline">
-                                                    <a data-toggle="modal" href="#todo-task-modal">Modals form functionality</a>
-                                                </h4>
-                                                <p class="todo-inline todo-float-r">Rudy,
-                                                    <span class="todo-green">12 OCT</span>
-                                                </p>
-                                            </li>
-                                            <li class="todo-tasks-item">
-                                                <h4 class="todo-inline">
-                                                    <a data-toggle="modal" href="#todo-task-modal">Responsive Optimization</a>
-                                                </h4>
-                                                <p class="todo-inline todo-float-r">Bob,
-                                                    <span class="todo-green">15 OCT</span>
-                                                </p>
-                                            </li>
-                                            <li class="todo-tasks-item">
-                                                <h4 class="todo-inline">
-                                                    <a data-toggle="modal" href="#todo-task-modal">Search and filter functionality testing</a>
-                                                </h4>
-                                                <p class="todo-inline todo-float-r">Hiro,
-                                                    <span class="todo-green">24 OCT</span>
-                                                </p>
-                                            </li>
-                                            <li class="todo-tasks-item">
-                                                <h4 class="todo-inline">
-                                                    <a data-toggle="modal" href="#todo-task-modal">User Acceptance Test Documentation</a>
-                                                </h4>
-                                                <p class="todo-inline todo-float-r">Kathy,
-                                                    <span class="todo-green">28 OCT</span>
-                                                </p>
-                                            </li>
+                                            <% @optatives.each do |optative| %>
+                                                <li class="todo-tasks-item">
+                                                    <h4 class="todo-inline">
+                                                        <a href="<%= optative_path optative %>"><%= optative.title %></a>
+                                                    </h4>
+                                                    <p class="todo-inline todo-float-r"><%= optative.professor%>, 
+                                                        <span class="todo-red"><%= optative.program%></span>
+                                                    </p>
+                                                </li>
+                                            <% end -%>
+                                        
                                         </ul>
                                     </div>
                                 </div>

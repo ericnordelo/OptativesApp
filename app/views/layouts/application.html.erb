@@ -38,6 +38,7 @@
         };
     var text_alert = $('p.alert').text();
      if (text_alert != "") {
+
           $('button#alert').attr('data-title', text_alert);
           $(function(){
             $(document).on('turbolinks:load', function(){
