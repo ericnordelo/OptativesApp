@@ -28,8 +28,24 @@ body{
 	background-color: rgb(238, 241, 245);
 }
 
+.box-shadow{
+	box-shadow: 5px 5px 10px black;
+}
+
 .hidden{
 	display: none;
+}
+
+#admin_opt{
+	color: crimson !important;
+	transform: scale(1.6);
+	opacity: 0.7
+}
+
+#admin_opt:hover{
+	opacity: 1;
+
+	color: red !important;
 }
 
 #login{
