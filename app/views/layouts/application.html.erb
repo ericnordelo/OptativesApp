@@ -6,6 +6,8 @@
 
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <script type="text/javascript" src="/jquery.js"></script>
+    <link href="/assets/global/plugins/bootstrap-sweetalert/sweetalert.css" rel="stylesheet" type="text/css" />
+    <%= yield :styles %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
 
@@ -13,10 +15,27 @@
     <%= render 'partials/nav'%>
     <div class="container">
       <%= yield %>
-      <p class="notice"><%= notice %></p>
-      <p class="alert"><%= alert %></p>
+      <p class="hidden notice"><%= notice %></p>
+      <p class="hidden alert"><%= alert %></p>
     </div>
-  	
+  
+<button id="notice" class="hidden mt-sweetalert" data-title="Sweet Alerts with Icons" data-message="Success Icon" data-type="success" data-allow-outside-click="true" data-confirm-button-class="btn-success">Icon Success Alert</button>
+   
 
   </body>
+  <script src="/assets/global/plugins/bootstrap-sweetalert/sweetalert.min.js" type="text/javascript"></script>
+  <script src="/assets/pages/scripts/ui-sweetalert.min.js" type="text/javascript"></script>
+  <%= yield :scripts %>
+
+  <script type="text/javascript">
+    $(function(){
+      $(document).on('turbolinks:load', function(){
+        var text = $('p.notice').text();
+        if (text != "") {
+          $('button#notice').attr('data-title', text);
+          $('button#notice').click()
+        };
+      })
+    });
+  </script>
 </html>

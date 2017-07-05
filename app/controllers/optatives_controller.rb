@@ -1,6 +1,6 @@
 class OptativesController < ApplicationController
   load_and_authorize_resource
-
+  
   # GET /optatives
   # GET /optatives.json
   def index
