@@ -45,7 +45,11 @@
                                                     <span class="help-block">Año para el que está destinado</span>
                                                 </div>
                                                 <div class="form-group form-md-line-input form-md-floating-label">
-                                                    <%= form.text_field :program, id: :optative_program, class: "form-control" %>
+                                                   <select name="optative[program]" id="multiple1" class="form-control select2">
+                                                                <option value="computacion">Computación</option>
+                                                                <option value="matematica">Matemática</option>
+                                                                
+                                                            </select>
                                                     
                                                     <label for="form_control_1">Carrera</label>
                                                     <span class="help-block"></span>

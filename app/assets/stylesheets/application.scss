@@ -10,14 +10,13 @@
  * files in this directory. Styles in this file should be added after the last require_* statement.
  * It is generally better to create a new file per style scope.
  *
- * require_tree .
+ *= require_tree .
  * require_self
  */
 
 // Place all the styles related to the optatives controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
-
 
 
 @import "bootstrap-sprockets";
@@ -30,6 +29,12 @@ body{
 
 .box-shadow{
 	box-shadow: 5px 5px 10px black;
+	
+}
+
+.box-shadow-silver{
+	box-shadow: 0px 5px 10px silver;
+	
 }
 
 .hidden{
