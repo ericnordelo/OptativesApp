@@ -1,26 +1,59 @@
-<h2>Log in</h2>
 
-<%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
-  <div class="field">
-    <%= f.label :email %><br />
-    <%= f.email_field :email, autofocus: true %>
-  </div>
 
-  <div class="field">
-    <%= f.label :password %><br />
-    <%= f.password_field :password, autocomplete: "off" %>
-  </div>
 
-  <% if devise_mapping.rememberable? -%>
-    <div class="field">
-      <%= f.check_box :remember_me %>
-      <%= f.label :remember_me %>
-    </div>
-  <% end -%>
+
+
+    <div id="" class="container">    
+        <div id="loginbox" style="margin-top:50px;" class="mainbox col-md-6 col-md-offset-3 col-sm-8 col-sm-offset-2">                    
+            <div class="panel panel-info" >
+                    <div class="panel-heading ">
+                        <div class="panel-title">Iniciar Sesión</div>
+                        
+                    </div>     
+
+                    <div style="padding-top:30px" id="login" class="panel-body" >
+
+                        <div style="display:none" id="login-alert" class="alert alert-danger col-sm-12"></div>
+                            
+                        
+                    <%= form_for(resource, as: resource_name, url: session_path(resource_name), html: {class: "form-horizontal", role: "form", id: "loginform"}) do |f| %>
+                             
+  
+
+
 
   <div class="actions">
-    <%= f.submit "Log in" %>
-  </div>
-<% end %>
+  </div>       
+                            <div style="margin-bottom: 25px" class="input-group">
+                                        <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
+                                        <%= f.email_field :email, autofocus: true, class: "form-control", placeholder: "correo" %>
+                                    </div>
+                                
+                            <div style="margin-bottom: 25px" class="input-group">
+                                        <span class="input-group-addon"><i class="glyphicon glyphicon-lock"></i></span>
+                                        <%= f.password_field :password, autocomplete: "off", class: "form-control", placeholder: "contraseña" %>
+                                    </div>
+                                    
+
+                  
 
 
+                                <div style="margin-top:10px" class="form-group">
+                                    <!-- Button -->
+
+                                    <div class="col-sm-12 controls">
+                                      <%= f.submit "Iniciar", class: "btn btn-success" %>
+
+                                    </div>
+                                </div>
+  
+                            <% end -%>     
+
+
+
+                        </div>                     
+                    </div>  
+        </div>
+      
+    </div>
+    

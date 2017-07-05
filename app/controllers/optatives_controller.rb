@@ -1,10 +1,9 @@
 class OptativesController < ApplicationController
-  before_action :set_optative, only: [:show, :edit, :update, :destroy]
+  load_and_authorize_resource
 
   # GET /optatives
   # GET /optatives.json
   def index
-    @optatives = Optative.all
   end
 
   # GET /optatives/1
@@ -14,7 +13,6 @@ class OptativesController < ApplicationController
 
   # GET /optatives/new
   def new
-    @optative = Optative.new
   end
 
   # GET /optatives/1/edit
@@ -24,7 +22,6 @@ class OptativesController < ApplicationController
   # POST /optatives
   # POST /optatives.json
   def create
-    @optative = Optative.new(optative_params)
 
     respond_to do |format|
       if @optative.save

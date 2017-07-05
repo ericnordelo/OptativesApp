@@ -37,6 +37,8 @@ gem 'bootstrap-sass'
 gem 'devise'
 gem 'cancancan'
 gem 'rolify'
+gem 'sunspot_rails'
+gem 'sunspot_solr'
 
 
 group :development, :test do
