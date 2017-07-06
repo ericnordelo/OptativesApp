@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170704182424) do
+ActiveRecord::Schema.define(version: 20170706151557) do
 
   create_table "optatives", force: :cascade do |t|
     t.string "title"
@@ -23,6 +23,7 @@ ActiveRecord::Schema.define(version: 20170704182424) do
     t.integer "enrollment"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "taked", default: 0, null: false
   end
 
   create_table "roles", force: :cascade do |t|

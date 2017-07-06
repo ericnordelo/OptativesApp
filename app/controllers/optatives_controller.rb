@@ -1,6 +1,10 @@
 class OptativesController < ApplicationController
   load_and_authorize_resource
   
+  def register
+    redirect_to root_path, notice: "Todo bien"
+  end
+
   # GET /optatives
   # GET /optatives.json
   def index

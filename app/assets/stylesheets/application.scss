@@ -27,11 +27,29 @@ body{
 	background-color: rgb(238, 241, 245);
 }
 
+@keyframes slide {
+0% { transform: scale(1); background-color: rgb(52, 158, 196); }
+20% {transform: scale(1.4); background-color: green; }
+40% { transform: scale(1); background-color: rgb(52, 158, 196); }
+to { transform: scale(1); }
+ 
+}
+
+.animated-button{
+	animation: slide 5s infinite;
+}
+
 footer{
 	
 	background-color: rgb(231,231,231);
 	display: block;
 	width: 100%;
+}
+
+.flex-container{
+	display: flex;
+	align-items: center;
+	justify-content: center;
 }
 
 .box-shadow{

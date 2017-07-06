@@ -4,7 +4,8 @@ Rails.application.routes.draw do
       }
   resources :optatives
   root 'welcome#index'
+  post 'optative/:id/register', as: :register, controller: :optatives, action: :register 
 
-match '/:anything', :to => "errors#not_found", :constraints => { :anything => /.*/ }, via: :all
+  match '/:anything', :to => "errors#not_found", :constraints => { :anything => /.*/ }, via: :all
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end
