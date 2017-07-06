@@ -8,7 +8,9 @@
 
 User.delete_all
 User.create username: 'admin', email: 'admin@host.com', password: 'administrator'
+User.create username: 'ericng', email: 'eric.nordelo39@gmail.com', password: 'administrator'
 User.first.add_role :admin 
+User.last.add_role :student 
 
 Optative.delete_all
 Optative.create title: 'Ruby on Rails', description: 'large description here...', professor: "Pedro Quintero", duration: 64, schedule: "9:00 a 1:00", year: 3, program: "computacion", enrollment: 30

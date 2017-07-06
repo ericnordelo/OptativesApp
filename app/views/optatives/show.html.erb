@@ -4,16 +4,51 @@
       <h2><strong>Optativo:</strong> <span style="color: crimson"><%= @optative.title %></span></h2>
     </div>
     <div class="col-sm-2 flex-container" style="padding-top: 18px;">
+      <% if @optative.enrollment == @optative.taked %>
+      <a href="" class="btn btn-danger btn-lg disabled">Se ha llenado<br> la matrícula</a>
+      <% else%>
       <% if user_signed_in? and current_user.has_role? :student %>
+      
+      <% if current_user.optatives.exists? @optative.id%>
+      <a href="" class="btn btn-danger btn-lg disabled">Ya Registrado...</a>
+      <% else %>
       <a href="<%= register_path @optative %>" data-method="post" class="btn btn-primary btn-lg animated-button">Registrarse Aquí</a>
+      <% end -%>
       <% else %>
       <a href="" class="btn btn-primary btn-lg disabled">Registrarse Aquí</a>
+      <% end -%>
       <% end -%>
     </div>
   </div>
   <hr>
 
 <div class="row">
+<div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
+                                <div class="dashboard-stat dashboard-stat-v2 green" href="#">
+                                    <div class="visual">
+                                        <i class="fa fa-shopping-cart"></i>
+                                    </div>
+                                    <div class="details">
+                                        <div class="number">
+                                            <span data-counter="counterup" data-value="<%= @optative.enrollment - @optative.taked%>">0</span>
+                                        </div>
+                                        <div class="desc"> Matrícula Disponible </div>
+                                    </div>
+                                </div>
+                            </div>
+                                <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
+                                <div class="dashboard-stat dashboard-stat-v2 red" href="#">
+                                    <div class="visual">
+                                        <i class="fa fa-bar-chart-o"></i>
+                                    </div>
+                                    <div class="details">
+                                        <div class="number">
+                                            <span data-counter="counterup" data-value="<%= @optative.taked %>">0</span></div>
+                                        <div class="desc"> Matrícula Ocupada </div>
+                                    </div>
+                                </div>
+                            </div>
+                            
                             <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
                                 <div class="dashboard-stat dashboard-stat-v2 blue" href="#">
                                     <div class="visual">
@@ -27,31 +62,7 @@
                                     </div>
                                 </div>
                             </div>
-                            <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
-                                <div class="dashboard-stat dashboard-stat-v2 red" href="#">
-                                    <div class="visual">
-                                        <i class="fa fa-bar-chart-o"></i>
-                                    </div>
-                                    <div class="details">
-                                        <div class="number">
-                                            <span data-counter="counterup" data-value="<%= @optative.taked %>">0</span></div>
-                                        <div class="desc"> Matrícula Ocupada </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
-                                <div class="dashboard-stat dashboard-stat-v2 green" href="#">
-                                    <div class="visual">
-                                        <i class="fa fa-shopping-cart"></i>
-                                    </div>
-                                    <div class="details">
-                                        <div class="number">
-                                            <span data-counter="counterup" data-value="<%= @optative.enrollment - @optative.taked%>">0</span>
-                                        </div>
-                                        <div class="desc"> Matrícula Disponible </div>
-                                    </div>
-                                </div>
-                            </div>
+                        
                             <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
                                 <div class="dashboard-stat dashboard-stat-v2 purple" href="#">
                                     <div class="visual">

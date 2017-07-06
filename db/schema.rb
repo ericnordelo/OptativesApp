@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170706151557) do
+ActiveRecord::Schema.define(version: 20170706205349) do
 
   create_table "optatives", force: :cascade do |t|
     t.string "title"
@@ -24,6 +24,13 @@ ActiveRecord::Schema.define(version: 20170706151557) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.integer "taked", default: 0, null: false
+  end
+
+  create_table "optatives_users", id: false, force: :cascade do |t|
+    t.integer "optative_id"
+    t.integer "user_id"
+    t.index ["optative_id"], name: "index_optatives_users_on_optative_id"
+    t.index ["user_id"], name: "index_optatives_users_on_user_id"
   end
 
   create_table "roles", force: :cascade do |t|

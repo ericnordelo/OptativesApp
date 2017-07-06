@@ -2,7 +2,10 @@ class OptativesController < ApplicationController
   load_and_authorize_resource
   
   def register
-    redirect_to root_path, notice: "Todo bien"
+    opt = Optative.find params[:id]
+    current_user.optatives.push opt
+    opt.update_attributes taked: opt.taked + 1
+    redirect_to root_path, notice: "Te has registrado satisfactoriamente en el optativo."
   end
 
   # GET /optatives
