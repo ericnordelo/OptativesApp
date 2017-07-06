@@ -74,7 +74,7 @@
                                             <% @optatives.each do |optative| %>
                                                 <li class="todo-tasks-item">
                                                     <h4 class="todo-inline">
-                                                        <a href="<%= optative_path optative %>"><%= optative.title %></a>
+                                                        <a href="<%= optative_path optative %>" data-turbolinks="false"><%= optative.title %></a>
                                                     </h4>
                                                     <p class="todo-inline todo-float-r"><%= optative.professor%>, 
                                                         <span class="todo-red"><%= optative.program.capitalize%></span>
