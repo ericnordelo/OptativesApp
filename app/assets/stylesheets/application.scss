@@ -35,6 +35,11 @@ to { transform: scale(1); }
  
 }
 
+.rounded-buttons a{
+	border-radius: 10px !important;
+	box-shadow: 0 0 10px black !important;
+}
+
 .animated-button{
 	animation: slide 5s infinite;
 }

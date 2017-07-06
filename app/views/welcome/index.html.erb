@@ -74,10 +74,25 @@
                                             <% @optatives.each do |optative| %>
                                                 <li class="todo-tasks-item">
                                                     <h4 class="todo-inline">
-                                                        <a href="<%= optative_path optative %>" data-turbolinks="false"><%= optative.title %></a>
+                                                        <a href="<%= optative_path optative %>" data-turbolinks="false">
+                                                        <% if user_signed_in? and optative.users.exists? current_user.id %>
+                                                            <span style="color: green;"><%= optative.title %></span>
+                                                        <% elsif optative.enrollment == optative.taked %>
+                                                            <span style="color: crimson;"><%= optative.title %></span>
+                                                        <% else %>
+                                                            <%= optative.title %>
+                                                        <% end -%>
+                                                        
+                                                        </a>
                                                     </h4>
                                                     <p class="todo-inline todo-float-r"><%= optative.professor%>, 
                                                         <span class="todo-red"><%= optative.program.capitalize%></span>
+                                                        <% if user_signed_in? and can? :edit, :optatives  %>
+                                                        ,
+                                                         <a href="<%= edit_optative_path optative%>">Editar</a>,
+                                                        <a href="<%= list_path optative %>" style="color: blue">Ver Listado</a>,
+                                                        <a href="<%= optative_path optative %>" style="color: red" data-method="DELETE" data-confirm="¿ Eliminar de forma permanente ?">Eliminar</a>
+                                                        <% end -%>
                                                     </p>
                                                 </li>
                                             <% end -%>

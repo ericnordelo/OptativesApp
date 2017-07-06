@@ -1,6 +1,10 @@
 class OptativesController < ApplicationController
   load_and_authorize_resource
-  
+    
+  def list
+    @optative = Optative.find params[:id]
+  end
+
   def register
     opt = Optative.find params[:id]
     current_user.optatives.push opt
@@ -32,7 +36,7 @@ class OptativesController < ApplicationController
 
     respond_to do |format|
       if @optative.save
-        format.html { redirect_to @optative, notice: 'Optative was successfully created.' }
+        format.html { redirect_to @optative, notice: 'El optativo ha sido satisfactoriamente creado.' }
         format.json { render :show, status: :created, location: @optative }
       else
         format.html { render :new }
@@ -46,7 +50,7 @@ class OptativesController < ApplicationController
   def update
     respond_to do |format|
       if @optative.update(optative_params)
-        format.html { redirect_to @optative, notice: 'Optative was successfully updated.' }
+        format.html { redirect_to @optative, notice: 'El optativo ha sido satisfactoriamente actualizado.' }
         format.json { render :show, status: :ok, location: @optative }
       else
         format.html { render :edit }
@@ -60,7 +64,7 @@ class OptativesController < ApplicationController
   def destroy
     @optative.destroy
     respond_to do |format|
-      format.html { redirect_to optatives_url, notice: 'Optative was successfully destroyed.' }
+      format.html { redirect_to root_path, notice: 'El optativo ha sido satisfactoriamente destruido.' }
       format.json { head :no_content }
     end
   end
