@@ -35,7 +35,7 @@
                                         <ul class="todo-tasks-content">
                                             <li class="todo-tasks-item">
                                                     
-                                                    <form action="<% root_url %>">
+                                                    <form action="<%= root_url %>">
                                                         <div class="row">
                                                         <div class="form-group col-md-3">
                                                             <select name="profesores" id="multiple1" class="form-control select2-multiple" multiple>
@@ -122,11 +122,9 @@
         <!-- BEGIN THEME LAYOUT SCRIPTS -->
         <script type="text/javascript">
         $(function(){
-            $(document).on('turbolinks:load', function(){
                 $('.select2-search__field').eq(0).attr('placeholder', 'Profesores');
                 $('.select2-search__field').eq(1).attr('placeholder', 'Carrera');
                 $('.select2-search__field').eq(2).attr('placeholder', 'Años');
-            });
         })
         </script>
 <% end -%>
