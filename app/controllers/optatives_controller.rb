@@ -33,8 +33,9 @@ class OptativesController < ApplicationController
   # POST /optatives
   # POST /optatives.json
   def create
-
+dfdfd
     respond_to do |format|
+
       if @optative.save
         format.html { redirect_to @optative, notice: 'El optativo ha sido satisfactoriamente creado.' }
         format.json { render :show, status: :created, location: @optative }
