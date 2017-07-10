@@ -9,7 +9,7 @@
   <thead>
     <tr>
       <th>Nombre</th>
-      <th>Correo</th>
+      <th>Grupo</th>
       
     </tr>
   </thead>
@@ -17,8 +17,8 @@
   <tbody>
     <% @optative.users.each do |user| %>
       <tr>
-        <td><%= user.username %></td>
-        <td><%= user.email %></td>
+        <td><%= user.full_name %></td>
+        <td><%= user.group %></td>
        
       </tr>
     <% end %>

@@ -21,11 +21,18 @@ class Users::SessionsController < Devise::SessionsController
 
 
       # p client.operations
+
       if (User.where email: params.require(:user).permit(:email)[:email]).count != 0
       else 
         @response = client.call :estudiante_autentificarse, message: { name: params[:user][:email], password: params.require(:user).permit(:password)[:password]}
         if ! @response.body[:estudiante_autentificarse_response][:estudiante_autentificarse_result].nil?
-          User.create username: params[:user][:email].split('@')[0], email: params[:user][:email], password: params.require(:user).permit(:password)[:password]
+          client = Savon.client(
+            wsdl: "https://login.uh.cu/WebServices/SearchService.asmx?WSDL",
+            endpoint: "https://login.uh.cu/WebServices/SearchService.asmx",
+            ssl_verify_mode: :none
+          )
+          @response = client.call :get_student_users, message: { email: params[:user][:email], fullName: "", faculty: "", career: "", year: "", group: "", gender: "", hasInternet: "", hasChat: "", hasEmail: ""}
+          User.create username: params[:user][:email].split('@')[0], email: params[:user][:email], password: params.require(:user).permit(:password)[:password], full_name: @response.body[:get_student_users_response][:get_student_users_result][:student_user][:full_name], group: @response.body[:get_student_users_response][:get_student_users_result][:student_user][:group]
           User.last.add_role :student
         end
       end
