@@ -1,4 +1,8 @@
 Rails.application.routes.draw do
+  get 'year/edit/:id', controller: 'year', action: 'edit', as: :edit_year
+  post 'year/update/:id', controller: 'year', action: 'update'
+  get 'year/index' 
+
   devise_for :users, only: [:sessions], controllers: {
         sessions: 'users/sessions'
       }

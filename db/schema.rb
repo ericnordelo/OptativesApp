@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170710160604) do
+ActiveRecord::Schema.define(version: 20170711094221) do
 
   create_table "optatives", force: :cascade do |t|
     t.string "title"
@@ -61,6 +61,7 @@ ActiveRecord::Schema.define(version: 20170710160604) do
     t.string "full_name"
     t.string "group"
     t.string "year"
+    t.string "program"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
@@ -71,6 +72,15 @@ ActiveRecord::Schema.define(version: 20170710160604) do
     t.index ["role_id"], name: "index_users_roles_on_role_id"
     t.index ["user_id", "role_id"], name: "index_users_roles_on_user_id_and_role_id"
     t.index ["user_id"], name: "index_users_roles_on_user_id"
+  end
+
+  create_table "years", force: :cascade do |t|
+    t.integer "value"
+    t.integer "max_optatives"
+    t.integer "semester"
+    t.string "program"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
 end

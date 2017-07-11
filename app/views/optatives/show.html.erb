@@ -7,13 +7,14 @@
       <% if @optative.enrollment == @optative.taked %>
       <a href="" class="btn btn-danger btn-lg disabled">Se ha llenado<br> la matrícula</a>
       <% else%>
-      <% if user_signed_in? and current_user.has_role? :student and current_user.year == @optative.year.to_s %>
+      <% if user_signed_in? and current_user.has_role? :student and current_user.year == @optative.year.to_s and current_user.can_register? @optative %>
       
       <% if current_user.optatives.exists? @optative.id%>
       <a href="" class="btn btn-danger btn-lg disabled">Ya Registrado...</a>
       <% else %>
       <a data-confirm="Esta acción es permanente... ¿ estás seguro ?" href="<%= register_path @optative %>" data-method="post" class="btn btn-primary btn-lg animated-button">Registrarse Aquí</a>
       <% end -%>
+
       <% else %>
       <a href="" class="btn btn-primary btn-lg disabled">Registrarse Aquí</a>
       <% end -%>

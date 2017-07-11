@@ -32,7 +32,7 @@ class Users::SessionsController < Devise::SessionsController
             ssl_verify_mode: :none
           )
           @response = client.call :get_student_users, message: { email: params[:user][:email], fullName: "", faculty: "", career: "", year: "", group: "", gender: "", hasInternet: "", hasChat: "", hasEmail: ""}
-          User.create username: params[:user][:email].split('@')[0], email: params[:user][:email], password: params.require(:user).permit(:password)[:password], full_name: @response.body[:get_student_users_response][:get_student_users_result][:student_user][:full_name], group: @response.body[:get_student_users_response][:get_student_users_result][:student_user][:group], year: @response.body[:get_student_users_response][:get_student_users_result][:student_user][:year] 
+          User.create username: params[:user][:email].split('@')[0], email: params[:user][:email], password: params.require(:user).permit(:password)[:password], full_name: @response.body[:get_student_users_response][:get_student_users_result][:student_user][:full_name], group: @response.body[:get_student_users_response][:get_student_users_result][:student_user][:group], year: @response.body[:get_student_users_response][:get_student_users_result][:student_user][:year], program: @response.body[:get_student_users_response][:get_student_users_result][:student_user][:career] 
           User.last.add_role :student
         end
       end
