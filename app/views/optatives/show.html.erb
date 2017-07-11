@@ -7,7 +7,7 @@
       <% if @optative.enrollment == @optative.taked %>
       <a href="" class="btn btn-danger btn-lg disabled">Se ha llenado<br> la matrícula</a>
       <% else%>
-      <% if user_signed_in? and current_user.has_role? :student and current_user.year == @optative.year.to_s and current_user.can_register? @optative %>
+      <% if user_signed_in? and current_user.has_role? :student and current_user.year == @optative.year.to_s and current_user.can_register?( @optative)[0] %>
       
       <% if current_user.optatives.exists? @optative.id%>
       <a href="" class="btn btn-danger btn-lg disabled">Ya Registrado...</a>
@@ -16,8 +16,22 @@
       <% end -%>
 
       <% else %>
+      <% if ! current_user.can_register?( @optative)[0] %>
+      <% if current_user.optatives.exists? @optative.id%>
+      <a href="" class="btn btn-danger btn-lg disabled">Ya Registrado...</a>
+      <% else %>
+      <% if ! current_user.can_register?( @optative)[1]%>
+      <a href="" class="btn btn-primary btn-lg disabled">Ya registrado en <%= current_user.optatives.count%></a>
+      <% else %>
+
+      <a href="" class="btn btn-primary btn-lg disabled">Optativo no correspondiente <br> a tu carrera</a>
+      <% end -%>
+      <% end -%>
+      <%else%>
       <a href="" class="btn btn-primary btn-lg disabled">Registrarse Aquí</a>
       <% end -%>
+      <% end -%>
+
       <% end -%>
     </div>
   </div>
@@ -96,7 +110,7 @@
   </tr>
   <tr>
     <td><strong>Carrera:</strong></td>
-    <td><%= @optative.program %></td>
+    <td><%= @optative.program == "matematica" ? "Matemática" : "Computación" %></td>
   </tr>
   
 </table>

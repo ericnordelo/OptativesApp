@@ -10,26 +10,26 @@ class User < ApplicationRecord
   	
   	if self.program == "Ciencias de la Computación"
   		if optative.program == "matematica"
-  			return false
+  			return [false, true]
   		else
 			year = Year.where value: self.year, semester: ( Date.today.month >= 2 and Date.today.month <= 9 ? 2 : 1 ), program: "Computación"
 			year = year.first
   				p year
   			if self.optatives.count < year.max_optatives
-  				return true
+  				return [true]
   			end
-  			return false
+  			return [false, false]
   		end
   	else
   		if optative.program == "computacion"
-  			return false
+  			return [false, true]
   		else
 			year = Year.where value: self.year, semester: ( Date.today.month >= 2 and Date.today.month <= 9 ? 2 : 1 ), program: "Matemática"
 			year = year.first
   			if self.optatives.count < year.max_optatives
-  				return true
+  				return [true]
   			end
-  			return false
+  			return [false, false]
   		end
   	end
   end
