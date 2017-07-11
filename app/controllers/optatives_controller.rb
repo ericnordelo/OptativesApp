@@ -3,6 +3,12 @@ class OptativesController < ApplicationController
     
   def list
     @optative = Optative.find params[:id]
+    respond_to do |format|
+      format.html
+      format.xlsx {
+        response.headers['Content-Disposition'] = 'attachment; filename="listado.xlsx"'
+      }
+    end
   end
 
   def register

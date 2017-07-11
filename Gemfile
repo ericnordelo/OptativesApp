@@ -1,5 +1,4 @@
 source 'https://rubygems.org'
-# source 'file:///home/ericng/Documents/rails/rubygems/rubygems'
 
 git_source(:github) do |repo_name|
   repo_name = "#{repo_name}/#{repo_name}" unless repo_name.include?("/")
@@ -41,7 +40,7 @@ gem 'cancancan'
 gem 'rolify'
 gem 'sunspot_rails'
 gem 'sunspot_solr'
-  
+gem 'axlsx_rails'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console

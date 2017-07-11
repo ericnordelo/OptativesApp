@@ -1,0 +1,14 @@
+wb = xlsx_package.workbook
+
+wb.styles do |style|
+	highlight_cell = style.add_style(bg_color: "EFC376",
+                                   border: Axlsx::STYLE_THIN_BORDER,
+                                   alignment: { horizontal: :center })
+
+	wb.add_worksheet(name: "Registrados en #{@optative.title}") do |sheet|
+		@optative.users.each do |user|
+	      sheet.add_row [user.full_name, user.group], style: highlight_cell
+	    end
+	end
+
+end
