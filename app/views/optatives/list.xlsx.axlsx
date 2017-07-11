@@ -6,6 +6,8 @@ wb.styles do |style|
                                    alignment: { horizontal: :center })
 
 	wb.add_worksheet(name: "Registrados en #{@optative.title}") do |sheet|
+		sheet.add_row ["Nombre", "Grupo"], style: highlight_cell
+		sheet.add_row []
 		@optative.users.each do |user|
 	      sheet.add_row [user.full_name, user.group], style: highlight_cell
 	    end
