@@ -33,7 +33,6 @@ class OptativesController < ApplicationController
   # POST /optatives
   # POST /optatives.json
   def create
-dfdfd
     respond_to do |format|
 
       if @optative.save

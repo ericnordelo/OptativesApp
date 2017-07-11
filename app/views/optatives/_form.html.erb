@@ -1,3 +1,18 @@
+<% if @optative.errors.any? %>
+<div class="container" style="border: 2px solid black; margin-bottom: 20px;">
+  <h2 style="color: red;">Los siguientes errores no permiten que la acción se realice correctamente:</h2>
+<% @optative.errors.messages.each do |err| %>
+  
+  <p>El campo <%= err[0]%> 
+  <% err[1].each do |e|%>
+  <%= e %>,
+  <% end -%>
+  </p>
+<% end -%>
+  </div>
+
+<% end -%>
+
  <div class="row">
                             <div class="col-md-12 ">
                                 <!-- BEGIN VALIDATION STATES-->
