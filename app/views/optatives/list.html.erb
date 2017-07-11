@@ -1,0 +1,36 @@
+<%= link_to 'Download as .xlsx', list_path(@optative, format: :xlsx), class: "btn btn-success btn-lg #{@optative.taked==0 ? 'disabled' : '' }", style: "margin-bottom: 10px;" %>
+
+<div class="m-heading-1 border-green m-bordered"><h2><div>Listado de estudiantes matriculados en el optativo:</div></h2><h2><i style="color: red;"><%= @optative.title%></i></h2>
+<br>
+<strong>Matriculados:</strong> <%= @optative.taked %>, <strong>Matrícula Total:</strong> <%= @optative.enrollment%>, <strong>Año:</strong> <%= @optative.year %>, <strong>Carrera:</strong> <%= @optative.program == "matematica" ? "Matemática" : "Computación" %>
+</div>
+
+<div class="m-heading-1 border-green m-bordered">
+	<% if @optative.taked != 0%>
+	<table class="table table-hover">
+  <thead>
+    <tr>
+      <th>Nombre</th>
+      <th>Grupo</th>
+      
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @optative.users.each do |user| %>
+      <tr>
+        <td><%= user.full_name %></td>
+        <td><%= user.group %></td>
+       
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+<% else %>
+	<h4>No existen matriculados todavía.</h5>
+<% end -%>
+</div>
+
+<% content_for :styles do %>
+        <link href="/assets/global/css/components.min.css" rel="stylesheet" id="style_components" type="text/css" />
+<% end -%>

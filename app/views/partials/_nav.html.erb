@@ -1,0 +1,37 @@
+<nav class="navbar navbar-default">
+  <div class="container">
+    <!-- Brand and toggle get grouped for better mobile display -->
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="<%= root_path %>" data-turbolinks="false">Gestor de Optativos</a>
+    </div>
+
+    <!-- Collect the nav links, forms, and other content for toggling -->
+        <% @no_link_to_init_session ||= false%>
+        <% if not @no_link_to_init_session%>
+    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+      <ul class="nav navbar-nav">
+        
+      </ul>
+     
+      
+      <ul class="nav navbar-nav navbar-right">
+        <% if !user_signed_in? %>
+        <li><a href="<%= new_user_session_path%>">Iniciar Sesión</a></li>
+        <% else %>
+        <li><a href="<%= destroy_user_session_path%>" data-method="DELETE">Cerrar Sesión (<%= current_user.username%>)</a></li>
+        <% if can? :administrate, Optative %>
+          <li><a  href="<%= new_optative_path %>" class=" "><span id="admin_opt">Agregar Optativo</span></a></li>
+        <% end -%>
+        <% end -%>
+          <!-- <li><a href="<%= new_user_session_path%>">Iniciar Sesión</a></li> -->
+      </ul>
+    </div><!-- /.navbar-collapse -->
+        <% end -%>
+  </div><!-- /.container-fluid -->
+</nav>

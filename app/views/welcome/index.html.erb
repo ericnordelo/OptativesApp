@@ -1,0 +1,130 @@
+<!-- <div >
+    <div id="" class="todo-container">
+    <div class="row">
+        
+        <div class="col-md-12">
+            <div class="todo-tasks-container" id="filter">
+                <form>
+                    
+                </form>
+            </div>
+        </div>     
+    </div>       
+</div>    
+</div>
+<br> -->
+
+
+                        <div class="todo-container box-shadow-silver">
+                            <div class="row">
+                                
+                                <div class="col-md-12">
+                                    <div class="todo-tasks-container">
+                                        <div class="todo-head">
+                                           
+                                            <h3>
+                                                <span class="todo-grey">Optativos:</span> <%= @msg%></h3>
+                                            <p class="todo-inline">
+                                            <% if @optatives.count == 1 %>
+                                            <%= "1 Optativo Mostrándose" %>
+                                            <% else %>
+                                            <%= @optatives.count %> Optativos Mostrándose
+                                                <% end -%>
+                                            </p>
+                                        </div>
+                                        <ul class="todo-tasks-content">
+                                            <li class="todo-tasks-item">
+                                                    
+                                                    <form action="<%= root_url %>">
+                                                        <div class="row">
+                                                        <div class="form-group col-md-3">
+                                                            <select name="profesores" id="multiple1" class="form-control select2-multiple" multiple>
+                                                                <% @professors.each do |p| %>
+                                                                <option value="<%= p %>"><%= p %></option>
+                                                                <% end -%>
+                                                            </select>
+
+                                                        </div>
+                                                       <div class="form-group col-md-3">
+                                                        <select name="carreras" id="multiple2" class="form-control select2-multiple" multiple>
+                                                           <option value="matematica">Matemática</option>
+                                                            <option value="computacion" >Computación</option>
+                                                        </select>
+
+                                                    </div>
+                                                       <div class="form-group col-md-3">
+                                                        <select name="cursos" id="multiple3" class="form-control select2-multiple" multiple>
+                                                                <option value="1">1ro</option>
+                                                                <option value="2" >2do</option>
+                                                                <option value="3" >3ro</option>
+                                                                <option value="4" >4to</option>
+                                                                <option value="5" >5to</option>
+                                                            
+                                                        </select>
+
+                                                    </div>
+                                                       <div class="form-group col-md-3">
+                                                       <p class="todo-inline todo-float-r">
+                                                        <button type="submit" class="btn btn-success">Filtrar</button>
+                                                       </p>
+                                                    </div>
+                                                    </div>
+                                                    </form>
+                                                </li>
+                                            <% @optatives.each do |optative| %>
+                                                <li class="todo-tasks-item">
+                                                    <h4 class="todo-inline">
+                                                        <a href="<%= optative_path optative %>" data-turbolinks="false">
+                                                        <% if user_signed_in? and optative.users.exists? current_user.id %>
+                                                            <span style="color: green;"><%= optative.title %></span>
+                                                        <% elsif optative.enrollment == optative.taked %>
+                                                            <span style="color: crimson;"><%= optative.title %></span>
+                                                        <% else %>
+                                                            <%= optative.title %>
+                                                        <% end -%>
+                                                        
+                                                        </a>
+                                                    </h4>
+                                                    <p class="todo-inline todo-float-r"><%= optative.professor%>, 
+                                                        <span class="todo-red"><%= optative.program.capitalize%></span>
+                                                        <% if user_signed_in? and can? :edit, :optatives  %>
+                                                        ,
+                                                         <a href="<%= edit_optative_path optative%>">Editar</a>,
+                                                        <a href="<%= list_path optative %>" style="color: blue">Ver Listado</a>,
+                                                        <a href="<%= optative_path optative %>" style="color: red" data-method="DELETE" data-confirm="¿ Eliminar de forma permanente ?">Eliminar</a>
+                                                        <% end -%>
+                                                    </p>
+                                                </li>
+                                            <% end -%>
+                                        
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                      
+
+<% content_for :styles do %>
+        <link href="/assets/apps/css/todo.min.css" rel="stylesheet" type="text/css" />
+        <!-- END THEME LAYOUT STYLES -->
+        <link href="/assets/global/plugins/select2/css/select2.min.css" rel="stylesheet" type="text/css" />
+        <link href="/assets/global/plugins/select2/css/select2-bootstrap.min.css" rel="stylesheet" type="text/css" />
+<% end -%>
+
+<% content_for :scripts do %> 
+        <script src="/assets/global/plugins/jquery-slimscroll/jquery.slimscroll.min.js" type="text/javascript"></script>
+        <script src="/assets/global/plugins/select2/js/select2.full.min.js" type="text/javascript"></script>
+        <script src="/assets/global/scripts/app.min.js" type="text/javascript"></script>
+        <!-- END THEME GLOBAL SCRIPTS -->
+        <!-- BEGIN PAGE LEVEL SCRIPTS -->
+        <script src="/assets/pages/scripts/components-select2.min.js" type="text/javascript"></script>
+        <!-- END PAGE LEVEL SCRIPTS -->
+        <!-- BEGIN THEME LAYOUT SCRIPTS -->
+        <script type="text/javascript">
+        $(function(){
+                $('.select2-search__field').eq(0).attr('placeholder', 'Profesores');
+                $('.select2-search__field').eq(1).attr('placeholder', 'Carrera');
+                $('.select2-search__field').eq(2).attr('placeholder', 'Años');
+        })
+        </script>
+<% end -%>
