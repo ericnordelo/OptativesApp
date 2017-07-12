@@ -9,6 +9,7 @@ class User < ApplicationRecord
   def can_register? optative
   	
   	if self.program == "Ciencias de la Computación"
+  		
   		if optative.program == "matematica"
   			return [false, true]
   		else
